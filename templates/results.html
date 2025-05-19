@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .result-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #00796b;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        a:hover {
+            background-color: #004d40;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h2>🌦️ Weather in <span th:text="${city}"></span></h2>
+
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+
+        <p th:if="${temp}">🌡️ Temperature: <span th:text="${temp}"></span> °C</p>
+        <p th:if="${humidity}">💧 Humidity: <span th:text="${humidity}"></span>%</p>
+        <p th:if="${description}">📋 Condition: <span th:text="${description}"></span></p>
+
+        <a href="/">🔁 Search Again</a>
+    </div>
+</body>
+</html>
